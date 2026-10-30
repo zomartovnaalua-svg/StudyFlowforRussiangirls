@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="StudyFlow — интерактивный план подготовки к ЕГЭ и Duolingo" />
+    <title>StudyFlow — ЕГЭ и Duolingo</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <a class="brand" href="#dashboard"><span class="brand-mark">S</span><span>StudyFlow</span></a>
+        <p class="side-label">МОЙ ПЛАН</p>
+        <nav class="nav">
+          <a class="active" href="#dashboard">⌂ Главная</a>
+          <a href="#trainer">◎ Тренажёр</a>
+          <a href="#exam">◷ Пробный ЕГЭ</a>
+          <a href="#duolingo">◈ Duolingo</a>
+          <a href="#analytics">⌁ Аналитика</a>
+        </nav>
+        <div class="side-tip"><span>💡</span><p><strong>Product-идея</strong>Проверяй, какая функция реально помогает пользователю заниматься каждый день.</p></div>
+      </aside>
+
+      <main>
+        <header class="topbar">
+          <div><p class="eyebrow">ПОДГОТОВКА К ЕГЭ</p><h1>Привет, Саша!</h1></div>
+          <div class="top-actions"><button id="notificationButton" class="outline-button">🔔 Напомнить мне</button><div class="streak">⚡ <strong id="streakValue">7</strong> дней Duolingo</div></div>
+        </header>
+
+        <section id="dashboard" class="hero-card">
+          <div><p class="eyebrow">ТВОЯ БОЛЬШАЯ ЦЕЛЬ</p><h2>Спокойно подготовиться<br />к <em>ЕГЭ</em></h2><p>Не нужно делать всё сразу. Выбери один шаг на сегодня, а StudyFlow покажет твой путь дальше.</p><div class="hero-buttons"><a class="primary-button" href="#trainer">Решать задания <span>→</span></a><a class="ghost-button" href="#exam">Запустить пробник</a></div></div>
+          <div class="goal-card"><span>До ЕГЭ</span><strong id="daysLeft">127</strong><small>дней</small><div class="progress-track"><i id="goalProgress"></i></div><p><b id="goalPercent">38%</b> месячного плана выполнено</p></div>
+        </section>
+
+        <section class="overview-grid">
+          <article class="panel today-panel"><div class="section-heading"><div><p class="eyebrow">СЕГОДНЯ</p><h3>Три маленьких шага</h3></div><span id="taskCounter" class="count-pill">0 / 3</span></div><div id="taskList" class="task-list"></div><button class="text-button" id="openTaskModal">+ Добавить задачу</button></article>
+          <article class="panel focus-panel"><p class="eyebrow">ФОКУС-СЕССИЯ</p><div id="focusTimer" class="timer">25:00</div><p id="timerMessage">Одна задача. Никаких отвлечений.</p><button class="peach-button" id="timerButton">Начать 25 минут</button><button class="reset-button" id="resetTimer">Сбросить</button></article>
+        </section>
+
+        <section class="panel subject-panel"><div class="section-heading"><div><p class="eyebrow">ПРЕДМЕТЫ ЕГЭ</p><h3>Все предметы в одном месте</h3></div><button id="addSubject" class="outline-button small">+ свой курс</button></div><p class="support-text">Выбери для себя нужные предметы. Математика доступна на базовом и профильном уровне.</p><div id="subjectGrid" class="subject-grid"></div></section>
+
+        <section id="trainer" class="feature-section"><div class="feature-intro"><p class="eyebrow">УМНЫЙ ТРЕНАЖЁР</p><h2>Практика без страха ошибки</h2><p>Выбери предмет и реши короткое задание. После ответа увидишь объяснение и сможешь отметить тему как сложную.</p><ul><li>Все предметы ЕГЭ</li><li>Объяснения после ответа</li><li>Список слабых тем</li></ul></div><article class="trainer-card"><div class="trainer-controls"><label>Предмет<select id="trainerSubject"></select></label><button id="newQuestion" class="outline-button small">Новое задание</button></div><p id="questionMeta" class="question-meta">Демо-тренажёр</p><h3 id="questionText">Загружаем задание…</h3><div id="answers" class="answers"></div><p id="answerFeedback" class="answer-feedback" aria-live="polite"></p><div class="trainer-footer"><button id="markHard" class="text-button">☆ Отметить как сложное</button><span id="solvedCount">Решено сегодня: 0</span></div></article></section>
+
+        <section id="exam" class="exam-section"><div><p class="eyebrow">ПРОБНЫЙ ЭКЗАМЕН</p><h2>Проверь себя в условиях времени</h2><p>Демо-версия показывает механику настоящего сервиса: таймер, вопросы, результат и рекомендации после попытки.</p><div class="exam-details"><span>◷ 10 минут</span><span>☑ 5 заданий</span><span>⌁ разбор ошибок</span></div><button id="startExam" class="primary-button">Начать мини-пробник</button></div><div class="exam-visual"><div class="exam-clock">10:00</div><p>Мини-пробник</p><small>Выбери предмет после запуска</small></div></section>
+
+        <section id="duolingo" class="duolingo-section"><article class="duo-card"><div><p class="eyebrow">АНГЛИЙСКИЙ КАЖДЫЙ ДЕНЬ</p><h2>Duolingo-трекер</h2><p>Отмечай уроки и сохраняй серию. Английский нужен и для ЕГЭ, и для будущей учёбы за границей.</p><button id="duoComplete" class="green-button">Я прошла урок сегодня</button></div><div class="duo-stats"><strong id="duoDays">7</strong><span>дней подряд</span><div class="week-dots" id="weekDots"></div></div></article><article class="panel weak-topics"><p class="eyebrow">СЛОЖНЫЕ ТЕМЫ</p><h3>Вернись к ним завтра</h3><div id="hardTopics"><span>Пока нет сложных тем — супер!</span></div></article></section>
+
+        <section id="analytics" class="analytics-section"><div class="section-heading"><div><p class="eyebrow">АНАЛИТИКА</p><h2>Твой прогресс за неделю</h2></div><span class="analytics-caption">данные демо-версии</span></div><div class="analytics-grid"><article class="metric"><span>Фокус</span><strong id="focusCount">0</strong><small>сессий по 25 минут</small></article><article class="metric"><span>Тренажёр</span><strong id="solvedMetric">0</strong><small>заданий решено</small></article><article class="metric"><span>План</span><strong id="planMetric">0%</strong><small>задач выполнено</small></article><article class="metric"><span>Duolingo</span><strong id="duoMetric">7</strong><small>дней серии</small></article></div></section>
+      </main>
+    </div>
+
+    <dialog id="taskModal"><form method="dialog" id="taskForm"><button class="close" value="cancel" aria-label="Закрыть">×</button><p class="eyebrow">НОВАЯ ЗАДАЧА</p><h2>Добавь следующий шаг</h2><label>Что сделать?<input id="taskInput" required maxlength="100" placeholder="Например: решить вариант по русскому" /></label><label>Предмет<select id="taskSubject"></select></label><button class="primary-button" value="default">Добавить в план</button></form></dialog>
+    <dialog id="examModal"><form method="dialog" id="examForm"><button class="close" value="cancel" aria-label="Закрыть">×</button><p class="eyebrow">МИНИ-ПРОБНИК</p><h2>Выбери предмет</h2><label>Предмет<select id="examSubject"></select></label><p class="dialog-note">Ты получишь 5 коротких заданий и таймер на 10 минут. Это демо функции пробника.</p><button class="primary-button" value="default">Начать</button></form></dialog>
+    <dialog id="examRun"><div class="exam-run"><button class="close" id="closeExam" aria-label="Закрыть">×</button><p class="eyebrow">МИНИ-ПРОБНИК <span id="examSubjectLabel"></span></p><div class="exam-running"><strong id="examTimer">10:00</strong><span id="examProgress">1 / 5</span></div><h2 id="examQuestion">Вопрос</h2><div id="examAnswers" class="answers"></div><p id="examFeedback" class="answer-feedback"></p><button id="nextExamQuestion" class="primary-button" disabled>Следующее задание</button></div></dialog>
+    <div id="toast" class="toast" role="status"></div>
+    <script src="app.js"></script>
+  </body>
+</html>
